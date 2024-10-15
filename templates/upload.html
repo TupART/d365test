@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+</head>
+<body>
+    <h2>Upload Excel File</h2>
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if names_surnames %}
+    <h3>Select Rows to Process:</h3>
+    <form action="/submit" method="post">
+        <input type="hidden" name="file_path" value="{{ file_path }}">
+        <ul>
+        {% for i, (name, surname) in enumerate(names_surnames) %}
+            <li>
+                <input type="checkbox" name="rows" value="{{ i }}">{{ name }} {{ surname }}
+            </li>
+        {% endfor %}
+        </ul>
+        <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+</body>
+</html>
