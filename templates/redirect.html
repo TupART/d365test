@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirigiendo...</title>
+  <script>
+    // Extraer los parámetros de la URL
+    const params = new URLSearchParams(window.location.search);
+    const apiKey = params.get('apiKey');
+    const mode = params.get('mode');
+    const oobCode = params.get('oobCode');
+    const lang = params.get('lang');
+
+    // Construir la URL interna de la extensión
+    const extensionUrl = `chrome-extension://bkcfheniildoajbmndggciollkndaoih/src/popup/popup.html?apiKey=${apiKey}&mode=${mode}&oobCode=${oobCode}&lang=${lang}`;
+
+    // Redirigir automáticamente
+    window.location.href = extensionUrl;
+  </script>
+</head>
+<body>
+  <p>Redirigiendo...</p>
+</body>
+</html>
